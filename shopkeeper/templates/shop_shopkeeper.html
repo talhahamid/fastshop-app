@@ -1,0 +1,149 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fastshop | Add Products </title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/cs-skin-elastic.css' %}">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="{% static 'assets/scss/style.css' %}">
+    <link href="{% static 'assets/css/lib/vector-map/jqvmap.min.css' %}" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <aside id="left-panel" class="left-panel"
+        style="position: fixed;width: 225px; background-color: #002366;height: 100vh;">
+        <nav class="navbar navbar-expand-sm navbar-default">
+    
+            <div class="navbar-header" style="background-color: #002366; margin-top: 10px;">
+                <h4 class="text-white" style="margin-left:50px">Fastshop</h4>
+                <hr style="color:white;margin-left: 25px;width: 150px;">
+                <ul>
+                    <a href="/shopkeeper/profile/" style="text-decoration: none;"><li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Profile </li></a>
+                    <a href="/shopkeeper/shop/" style="text-decoration: none;">
+                        <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Shop </li>
+                    </a>
+                    <a href="/shopkeeper/addproducts/" style="text-decoration: none;">
+                        <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Add Product
+                        </li>
+                    </a>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Todays Special </li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Orders</li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Analytics</li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Coupons & Discounts
+                    </li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Shipping & Delivery
+                    </li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Customer Reviews
+                    </li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Setting</li>
+                    <li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Support & Help
+                        Center</li>
+                    <a href="/logout_shop/" style="text-decoration: none;"><li class="text-white" style="list-style: none;margin-top: 15px;margin-left: 10px;">Logout</li></a>
+    
+                </ul>
+            </div>
+    
+        </nav>
+    </aside>
+
+
+
+    <div id="right-panel" class="right-panel">
+        <header id="header" class="header  bg-white shadow-lg" style="height: 50px;">
+        </header>
+
+        <main style="margin-left: 300px;margin-top: 70px;width: 900px;">
+            <div class="container">
+                {% for product in products %}
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow-lg p-4">
+                            <table>
+                                <tr>
+                                    <td><img src="../../media/{{product.image1}}" style="width: 200px;height: 150px;"></td>
+                                    <td><img src="../../media/{{product.image2}}" style="width: 200px;height: 150px;"></td>
+                                    <td><img src="../../media/{{product.image3}}" style="width: 200px;height: 150px;"></td>
+                                    <td><img src="../../media/{{product.image4}}" style="width: 200px;height: 150px;"></td>
+                                </tr>    
+                            </table>
+                            <br>
+                            <p><b>Name:</b>{{product.name}}
+                            <b style="margin-left: 20px;">Brand:</b>{{product.brand}}  
+                            <b style="margin-left: 20px;">Price:</b>{{product.price}} Rs
+                            <b style="margin-left: 20px;">Quantity:</b>{{product.quantity}}
+                             <p><b>Cateogry:</b>{{product.category}}
+                            <b style="margin-left: 20px;">Size:</b>{{product.size}} 
+                            <b style="margin-left: 20px;">For:</b>{{product.forwhom}}
+                            <b style="margin-left: 20px;">Manufature:</b>{{product.manufacture}} </p>
+                            <p><b>Desription:</b>{{product.description}}</p>
+                            <div style="display: flex;">
+                                <!-- <button class="btn btn-primary btn-sm" style="width: 100px;">Edit</button> -->
+                                <a href="/shopkeeper/deleteproduct/{{product.id}}/" style="text-decoration: none;"><button class="btn btn-danger btn-sm" style="width: 100px; margin-left: 10px;">Delete</button></a>
+                            </div>    
+                        </div>
+                    </div>
+                </div><br>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+
+    </div>
+
+
+<script src="{% static 'assets/js/vendor/jquery-2.1.4.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
+<script src="{% static 'assets/js/lib/chart-js/Chart.bundle.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+<script src="{% static 'assets/js/widgets.js' %}"></script>
+<script src="{% static 'assets/js/lib/vector-map/jquery.vmap.js' %}"></script>
+<script src="{% static 'assets/js/lib/vector-map/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'assets/js/lib/vector-map/jquery.vmap.sampledata.js' %}"></script>
+<script src="{% static 'assets/js/lib/vector-map/country/jquery.vmap.world.js' %}"></script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

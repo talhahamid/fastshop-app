@@ -1,0 +1,110 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fastshop | Add Products</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="{% static 'apple-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/cs-skin-elastic.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/scss/style.css' %}">
+    <link href="{% static 'assets/css/lib/vector-map/jqvmap.min.css' %}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        /* Add your custom CSS styles here */
+        .rating-stars {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .rating-stars input {
+            display: none;
+        }
+
+        .rating-stars label {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .rating-stars label:hover,
+        .rating-stars label:hover~label,
+        .rating-stars input:checked~label {
+            color: #f8d736;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="/customers/" method="post">
+        {% csrf_token %}
+    <div class="form-group">
+        <label for="userRating" style="margin-left: 270px;">Rating:</label>
+        <div class="rating-stars">
+            <input type="radio" id="stars1" name="rating" value="1" onclick="rate(1)" />
+            <label for="stars1">&#9733;</label>
+            <input type="radio" id="stars2" name="rating" value="2" onclick="rate(2)" />
+            <label for="stars2">&#9733;</label>
+            <input type="radio" id="stars3" name="rating" value="3" onclick="rate(3)" />
+            <label for="stars3">&#9733;</label>
+            <input type="radio" id="stars4" name="rating" value="4" onclick="rate(4)" />
+            <label for="stars4">&#9733;</label>
+            <input type="radio" id="stars5" name="rating" value="5" onclick="rate(5)" />
+            <label for="stars5">&#9733;</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form> 
+
+    <script src="{% static 'assets/js/vendor/jquery-2.1.4.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/lib/chart-js/Chart.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <script src="{% static 'assets/js/widgets.js' %}"></script>
+    <script src="{% static 'assets/js/lib/vector-map/jquery.vmap.js' %}"></script>
+    <script src="{% static 'assets/js/lib/vector-map/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/vector-map/jquery.vmap.sampledata.js' %}"></script>
+    <script src="{% static 'assets/js/lib/vector-map/country/jquery.vmap.world.js' %}"></script>
+
+    <script>
+        let selectedRating = 0;
+
+        function rate(star) {
+            selectedRating = star;
+            highlightStars();
+        }
+
+        function highlightStars() {
+            for (let i = 1; i <= 5; i++) {
+                const starElement = document.querySelector(`.rating-stars input[value="${i}"]+label`);
+                if (i <= selectedRating) {
+                    starElement.style.color = '#ffd700'; // Highlighted star color
+                } else {
+                    starElement.style.color = '#ccc'; // Default star color
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
